@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const PremiumPlanDetails = ({ onBack }) => {
   const [activeImage, setActiveImage] = useState(0);
-  
+
   const images = [
     'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop',
@@ -28,14 +28,14 @@ const PremiumPlanDetails = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-800 to-black text-white">
-     
+
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12">
           {/* Image Gallery */}
           <div className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={images[activeImage]} 
+              <img
+                src={images[activeImage]}
                 alt="Premium Plan Facility"
                 className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -46,9 +46,8 @@ const PremiumPlanDetails = ({ onBack }) => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(index)}
-                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                    activeImage === index ? 'ring-2 ring-purple-400 scale-105' : 'opacity-70 hover:opacity-100'
-                  }`}
+                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${activeImage === index ? 'ring-2 ring-purple-400 scale-105' : 'opacity-70 hover:opacity-100'
+                    }`}
                 >
                   <img src={img} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -67,17 +66,17 @@ const PremiumPlanDetails = ({ onBack }) => {
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-5xl font-bold text-purple-400">₹8999</div>
+                <div className="text-5xl font-bold text-purple-400">₹9500</div>
                 <div className="text-gray-400">
-                  <div className="line-through">₹10999</div>
+                  <div className="line-through">₹15000</div>
                   <div className="text-sm">per month</div>
                 </div>
                 <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  33% OFF
+                  37% OFF
                 </div>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Experience luxury fitness with our Premium Plan. Enjoy dedicated coaching, health monitoring, 
+                Experience luxury fitness with our Premium Plan. Enjoy dedicated coaching, health monitoring,
                 and exclusive amenities designed for serious fitness enthusiasts and professionals.
               </p>
             </div>
@@ -100,10 +99,10 @@ const PremiumPlanDetails = ({ onBack }) => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to ="/contact" className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link to="/contact" className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                 TRY FOR FREE
               </Link>
-              <Link to ="/contact" className="flex-1 border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+              <Link to="/contact" className="flex-1 border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
                 CONTACT US
               </Link>
             </div>

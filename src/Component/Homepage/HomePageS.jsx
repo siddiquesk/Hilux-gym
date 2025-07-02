@@ -7,7 +7,7 @@ const HomePageS = () => {
     <div>
       <HiluxFitnessHero />
       <HiluxMembershipSection />
-     <FitnessProgramCards/>
+      <FitnessProgramCards />
     </div>
   );
 };

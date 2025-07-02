@@ -9,10 +9,10 @@ const HiluxFitnessHero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const stats = [
-    { icon: Users, number: '2000+', label: 'Happy Members' },
-    { icon: Dumbbell, number: '50+', label: 'Equipment' },
-    { icon: Award, number: '15+', label: 'Expert Trainers' },
-    { icon: Clock, number: '24/7', label: 'Access' }
+    { icon: Users, number: '200+', label: 'Happy Members' },
+    { icon: Dumbbell, number: '100+', label: 'Equipment' },
+    { icon: Award, number: '5+', label: 'Expert Trainers' },
+    { icon: Clock, number: '7 days', label: 'Access' }
   ];
 
   useEffect(() => {
@@ -40,18 +40,17 @@ const HiluxFitnessHero = () => {
           <source src={vedio2} type="video/mp4" />
           <source src={vedio1} type="video/mp4" />
         </video>
-        
+
         {/* Video Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/40"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50"></div>
-        
+
         {/* Fallback background if video doesn't load */}
         {!videoLoaded && (
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 via-black to-blue-900/30">
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30"></div>
           </div>
         )}
-        
         {/* Floating Particles */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(15)].map((_, i) => (
@@ -73,10 +72,9 @@ const HiluxFitnessHero = () => {
       <div className="relative z-10 flex items-center min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-18">
-            
             {/* Left Content */}
             <div className={`text-white transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
-              
+
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 bg-red-600/30 border border-red-500/40 rounded-full mb-6 backdrop-blur-md animate-pulse">
                 <Dumbbell className="w-4 h-4 mr-2 text-red-400" />
@@ -92,6 +90,18 @@ const HiluxFitnessHero = () => {
                   FITNESS
                 </span>
               </h1>
+              <p className="font-bold text-xl md:text-3xl md:mb-2 mb-0 flex items-center gap-3 md:ml-32 ml-4">
+                Powered By
+                <img
+                  src="/cult.webp"
+                  alt="logo"
+                  className="w-12 h-12 rounded-full object-cover border-2 bg-amber-50 border-white shadow-md"
+                />
+                cultsports
+              </p>
+
+
+
 
               {/* Subtitle */}
               <p className="text-lg sm:text-xl text-gray-200 mb-8 max-w-lg leading-relaxed drop-shadow-lg">
@@ -100,12 +110,12 @@ const HiluxFitnessHero = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link to ="/contact" className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 rounded-lg font-semibold text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30 flex items-center justify-center backdrop-blur-sm">
+                <Link to="/contact" className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 rounded-lg font-semibold text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30 flex items-center justify-center backdrop-blur-sm">
                   Start Your Journey
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                
-                <Link to ="/pricing" className="group px-8 py-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg font-semibold text-white hover:bg-white/30 transition-all duration-300 flex items-center justify-center">
+
+                <Link to="/pricing" className="group px-8 py-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg font-semibold text-white hover:bg-white/30 transition-all duration-300 flex items-center justify-center">
                   <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                   Watch Tour
                 </Link>
@@ -118,9 +128,8 @@ const HiluxFitnessHero = () => {
                   return (
                     <div
                       key={index}
-                      className={`text-center p-4 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 transform transition-all duration-500 hover:scale-105 hover:bg-white/20 ${
-                        currentStat === index ? 'ring-2 ring-red-500/60 bg-red-500/20' : ''
-                      }`}
+                      className={`text-center p-4 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 transform transition-all duration-500 hover:scale-105 hover:bg-white/20 ${currentStat === index ? 'ring-2 ring-red-500/60 bg-red-500/20' : ''
+                        }`}
                     >
                       <Icon className={`w-6 h-6 mx-auto mb-2 ${currentStat === index ? 'text-red-400' : 'text-white'} transition-colors duration-300 drop-shadow-lg`} />
                       <div className={`text-xl font-bold ${currentStat === index ? 'text-red-400' : 'text-white'} transition-colors duration-300 drop-shadow-lg`}>
@@ -135,7 +144,7 @@ const HiluxFitnessHero = () => {
 
             {/* Right Content - Interactive Elements */}
             <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
-              
+
               {/* Feature Cards */}
               <div className="space-y-6">
                 {[
@@ -186,7 +195,7 @@ const HiluxFitnessHero = () => {
                   <p className="text-gray-200 text-sm mb-4">Join thousands who've achieved their fitness goals</p>
                   <div className="flex justify-center">
                     <div className="relative">
-                      <Link to ="/contact" className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                      <Link to="/contact" className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-xl">
                         Get Started Today
                       </Link>
                       <div className="absolute inset-0 bg-red-600 rounded-lg animate-ping opacity-25"></div>
@@ -201,7 +210,7 @@ const HiluxFitnessHero = () => {
 
       {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
-      
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center backdrop-blur-sm">

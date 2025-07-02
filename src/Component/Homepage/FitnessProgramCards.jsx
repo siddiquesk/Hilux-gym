@@ -28,16 +28,16 @@ const useIntersectionObserver = (threshold = 0.1) => {
 };
 
 // Individual Program Card Component
-const ProgramCard = ({ 
-  title, 
-  description, 
-  bgColor, 
+const ProgramCard = ({
+  title,
+  description,
+  bgColor,
   textColor = "text-white",
   image,
   icon: Icon,
   animationDirection = "left",
   delay = 0,
-  featured = false 
+  featured = false
 }) => {
   const [cardRef, isVisible] = useIntersectionObserver(0.1);
   const [isHovered, setIsHovered] = useState(false);
@@ -59,12 +59,12 @@ const ProgramCard = ({
     >
       {/* Main Card */}
       <div className={`relative h-80 lg:h-96 rounded-2xl overflow-hidden ${bgColor} shadow-2xl`}>
-        
+
         {/* Background Image/Pattern */}
         {image && (
           <div className="absolute inset-0">
-            <img 
-              src={image} 
+            <img
+              src={image}
               alt={title}
               className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
             />
@@ -74,7 +74,7 @@ const ProgramCard = ({
 
         {/* Content */}
         <div className="relative h-full p-6 lg:p-8 flex flex-col justify-between">
-          
+
           {/* Header */}
           <div className="flex justify-between items-start">
             <div className="flex-1">
@@ -85,7 +85,7 @@ const ProgramCard = ({
                 {description}
               </p>
             </div>
-            
+
             {/* Arrow Icon */}
             <div className={`p-2 rounded-full bg-white/20 backdrop-blur-sm transform transition-all duration-300 ${isHovered ? 'rotate-45 scale-110' : ''}`}>
               <ChevronRight className={`w-6 h-6 ${textColor}`} />
@@ -111,7 +111,7 @@ const ProgramCard = ({
 
         {/* Hover Overlay */}
         <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
-        
+
         {/* Animated Border */}
         <div className={`absolute inset-0 rounded-2xl border-2 border-white/20 transition-all duration-300 ${isHovered ? 'border-white/40 shadow-lg' : ''}`} />
       </div>
@@ -173,7 +173,7 @@ const FitnessProgramCards = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 py-16 lg:py-24 overflow-hidden">
-      
+
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Animated Background Particles */}
@@ -189,20 +189,19 @@ const FitnessProgramCards = () => {
             }}
           />
         ))}
-        
+
         {/* Gradient Overlays */}
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-teal-500/10 to-transparent" />
         <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-cyan-500/10 to-transparent" />
       </div>
 
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        
+
         {/* Section Header */}
         <div
           ref={sectionRef}
-          className={`text-center mb-16 transform transition-all duration-1000 ${
-            isSectionVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-          }`}
+          className={`text-center mb-16 transform transition-all duration-1000 ${isSectionVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            }`}
         >
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
             <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -231,29 +230,29 @@ const FitnessProgramCards = () => {
               Ready to start your transformation journey?
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to ="/pricing" className="px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-xl font-semibold hover:scale-105 transform transition-all duration-300 shadow-2xl hover:shadow-teal-500/25">
+              <Link to="/pricing" className="px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-xl font-semibold hover:scale-105 transform transition-all duration-300 shadow-2xl hover:shadow-teal-500/25">
                 Explore Programs
               </Link>
-              <Link to ="/contact" className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
+              <Link to="/contact" className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
                 Learn More
               </Link>
             </div>
           </div>
         </div>
       </div>
-    {/* Download App */}
-          <AppDownload />
+      {/* Download App */}
+      <AppDownload />
 
-          {/* Footer CTA */}
-          <div className="mt-20 text-center max-w-4xl mx-auto">
-            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">Join the hilux family</h2>
-            <p className="text-gray-300 text-lg mb-8">
-              At hilux fitness, we make group workouts fun, daily food healthy & tasty, mental fitness easy with yoga & meditation, and medical & lifestyle care hassle-free.
-            </p>
-            <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-              #BeBetterEveryDay
-            </div>
-          </div>
+      {/* Footer CTA */}
+      <div className="mt-20 text-center max-w-4xl mx-auto">
+        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">Join the hilux family</h2>
+        <p className="text-gray-300 text-lg mb-8">
+          At hilux fitness, we make group workouts fun, daily food healthy & tasty, mental fitness easy with yoga & meditation, and medical & lifestyle care hassle-free.
+        </p>
+        <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+          #BeBetterEveryDay
+        </div>
+      </div>
       {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </div>

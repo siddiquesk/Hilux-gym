@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { 
-  Check, 
-  Star, 
-  Zap, 
-  Crown, 
+import {
+  Check,
+  Star,
+  Zap,
+  Crown,
   Diamond,
   Dumbbell,
   Users,
@@ -56,13 +56,13 @@ const PricingPage = () => {
       borderColor: 'border-gray-500/30',
       glowColor: 'shadow-gray-500/25',
       price: {
-        monthly:1999,
+        monthly: "2500",
       },
       popular: false,
       features: [
         { text: 'Access to gym equipment', icon: Dumbbell },
         { text: 'Locker facility', icon: Shield },
-        { text: '1 personal training session/month', icon: User }
+        { text: '1 personal training session', icon: User }
       ],
       badge: null
     },
@@ -74,7 +74,7 @@ const PricingPage = () => {
       borderColor: 'border-blue-500/30',
       glowColor: 'shadow-blue-500/25',
       price: {
-        monthly: 4900,
+        monthly: 5500,
       },
       popular: false,
       features: [
@@ -93,7 +93,7 @@ const PricingPage = () => {
       borderColor: 'border-red-500/30',
       glowColor: 'shadow-red-500/25',
       price: {
-        monthly: 8900,
+        monthly: 9500,
       },
       popular: true,
       features: [
@@ -112,7 +112,7 @@ const PricingPage = () => {
       borderColor: 'border-purple-500/30',
       glowColor: 'shadow-purple-500/25',
       price: {
-        monthly: 14900,
+        monthly: 15500,
       },
       popular: false,
       features: [
@@ -126,10 +126,10 @@ const PricingPage = () => {
   ];
 
   const stats = [
-    { number: '500+', label: 'Happy Members', icon: Users },
-    { number: '15+', label: 'Expert Trainers', icon: Award },
-    { number: '24/7', label: 'Gym Access', icon: Clock },
-    { number: '50+', label: 'Classes Monthly', icon: Calendar }
+    { number: '200+', label: 'Happy Members', icon: Users },
+    { number: '5+', label: 'Expert Trainers', icon: Award },
+    { number: '7 days', label: 'Gym Access', icon: Clock },
+    { number: '100+', label: 'Equipment', icon: Calendar }
   ];
 
   const getDiscountPercentage = (monthly, yearly) => {
@@ -167,7 +167,7 @@ const PricingPage = () => {
             Choose Your
             <span className="block text-red-500">Fitness Journey</span>
           </h1>
-          
+
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
             Transform your body, elevate your mind, and unlock your potential with our comprehensive fitness programs designed for every level.
           </p>
@@ -234,7 +234,7 @@ const PricingPage = () => {
               const Icon = plan.icon;
               const isHovered = hoveredPlan === plan.id;
               const discount = getDiscountPercentage(plan.price.monthly, plan.price.yearly);
-              
+
               return (
                 <div
                   key={plan.id}
@@ -256,7 +256,7 @@ const PricingPage = () => {
                   <div className={`relative bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border transition-all duration-500 hover:shadow-2xl ${plan.borderColor} ${isHovered ? plan.glowColor : 'shadow-xl'} ${plan.popular ? 'ring-2 ring-red-500/30' : ''}`}>
                     {/* Glow Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-r ${plan.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}></div>
-                    
+
                     {/* Header */}
                     <div className="relative z-10 text-center mb-8">
                       <div className="flex justify-center mb-4">
@@ -265,11 +265,11 @@ const PricingPage = () => {
                           <div className={`absolute inset-0 rounded-full blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100 ${plan.id === 'basic' ? 'bg-gray-400/20' : plan.id === 'standard' ? 'bg-blue-400/20' : plan.id === 'premium' ? 'bg-red-400/20' : 'bg-purple-400/20'}`}></div>
                         </div>
                       </div>
-                      
+
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-red-300 transition-colors">
                         {plan.name}
                       </h3>
-                      
+
                       <div className="flex items-center justify-center space-x-2">
                         <span className="text-3xl sm:text-4xl font-black text-white">
                           ₹{plan.price[billingCycle]}
@@ -307,7 +307,7 @@ const PricingPage = () => {
 
                     {/* CTA Button */}
                     <div className="relative z-10">
-                      <button 
+                      <button
                         onClick={() => handlePlanSelection(plan.id)}
                         className={`w-full py-3 sm:py-4 rounded-xl font-bold text-white transition-all duration-300 relative overflow-hidden group/btn ${plan.popular ? 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 shadow-lg shadow-red-500/25 hover:shadow-red-500/40' : 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700'} hover:scale-105 hover:shadow-xl`}
                       >
@@ -335,7 +335,7 @@ const PricingPage = () => {
           <p className="text-lg text-gray-300 mb-12">
             Join thousands of members who've already started their fitness journey with Hilux Fitness.
           </p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
             <div className="text-center group">
               <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl rounded-xl p-6 border border-gray-500/30 hover:border-red-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20">
@@ -344,7 +344,7 @@ const PricingPage = () => {
                 <p className="text-gray-400 text-sm">Cancel anytime, no questions asked</p>
               </div>
             </div>
-            
+
             <div className="text-center group">
               <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl rounded-xl p-6 border border-gray-500/30 hover:border-red-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20">
                 <Award className="w-8 h-8 text-red-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
@@ -352,7 +352,7 @@ const PricingPage = () => {
                 <p className="text-gray-400 text-sm">Certified trainers with 10+ years experience</p>
               </div>
             </div>
-            
+
             <div className="text-center group">
               <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-xl rounded-xl p-6 border border-gray-500/30 hover:border-red-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/20">
                 <Heart className="w-8 h-8 text-red-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
@@ -362,7 +362,7 @@ const PricingPage = () => {
             </div>
           </div>
 
-          <Link to ="/contact" className="group relative px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 text-lg">
+          <Link to="/contact" className="group relative px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 text-lg">
             <span className="relative z-10 flex items-center space-x-2">
               <span>Start Your Journey Today</span>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

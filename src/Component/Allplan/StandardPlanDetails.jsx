@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const StandardPlanDetails = ({ onBack }) => {
   const [activeImage, setActiveImage] = useState(0);
-  
+
   const images = [
     'https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop',
@@ -25,15 +25,15 @@ const StandardPlanDetails = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-800 to-black text-white">
-     
+
 
       <div className="container mx-auto px-4 py-8 ">
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12 ">
           {/* Image Gallery */}
           <div className="space-y-4 ">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={images[activeImage]} 
+              <img
+                src={images[activeImage]}
                 alt="Standard Plan Facility"
                 className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -44,9 +44,8 @@ const StandardPlanDetails = ({ onBack }) => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(index)}
-                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                    activeImage === index ? 'ring-2 ring-blue-400 scale-105' : 'opacity-70 hover:opacity-100'
-                  }`}
+                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${activeImage === index ? 'ring-2 ring-blue-400 scale-105' : 'opacity-70 hover:opacity-100'
+                    }`}
                 >
                   <img src={img} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -65,16 +64,16 @@ const StandardPlanDetails = ({ onBack }) => {
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-5xl font-bold text-blue-400">₹4999</div>
+                <div className="text-5xl font-bold text-blue-400">₹5500</div>
                 <div className="text-gray-400">
-                  <div className="line-through">₹7999</div>
+                  <div className="line-through">₹7500</div>
                 </div>
                 <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  33% OFF
+                  26% OFF
                 </div>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Our most popular plan combines equipment access with group classes and personal training. 
+                Our most popular plan combines equipment access with group classes and personal training.
                 Perfect for those who want variety and professional guidance in their fitness journey.
               </p>
             </div>
@@ -97,10 +96,10 @@ const StandardPlanDetails = ({ onBack }) => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to ="/contact" className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link to="/contact" className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                 TRY FOR FREE
               </Link>
-              <Link to ="/contact" className="flex-1 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+              <Link to="/contact" className="flex-1 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
                 CONTACT US
               </Link>
             </div>

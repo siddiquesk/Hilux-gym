@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Basic Plan Component
 const BasicPlanDetails = ({ onBack }) => {
   const [activeImage, setActiveImage] = useState(0);
-  
+
   const images = [
     'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop',
@@ -24,13 +24,13 @@ const BasicPlanDetails = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-          <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12">
           {/* Image Gallery */}
           <div className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={images[activeImage]} 
+              <img
+                src={images[activeImage]}
                 alt="Basic Plan Facility"
                 className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -41,9 +41,8 @@ const BasicPlanDetails = ({ onBack }) => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(index)}
-                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                    activeImage === index ? 'ring-2 ring-orange-400 scale-105' : 'opacity-70 hover:opacity-100'
-                  }`}
+                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${activeImage === index ? 'ring-2 ring-orange-400 scale-105' : 'opacity-70 hover:opacity-100'
+                    }`}
                 >
                   <img src={img} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -59,17 +58,17 @@ const BasicPlanDetails = ({ onBack }) => {
                 <h1 className="text-4xl font-bold">Basic Plan</h1>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-5xl font-bold text-orange-400">₹1999</div>
+                <div className="text-5xl font-bold text-orange-400">₹2500</div>
                 <div className="text-gray-400">
-                  <div className="line-through">₹2999</div>
-                
+                  <div className="line-through">₹3000</div>
+
                 </div>
                 <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  33% OFF
+                  16% OFF
                 </div>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Perfect for beginners and fitness enthusiasts who want access to quality equipment 
+                Perfect for beginners and fitness enthusiasts who want access to quality equipment
                 and professional guidance. Start your fitness journey with our most popular entry-level plan.
               </p>
             </div>
@@ -92,10 +91,10 @@ const BasicPlanDetails = ({ onBack }) => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to ="/contact" className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link to="/contact" className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                 TRY FOR FREE
               </Link>
-              <Link to ="/contact" className="flex-1 border-2 border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+              <Link to="/contact" className="flex-1 border-2 border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
                 CONTACT US
               </Link>
             </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ElitePlanDetails = ({ onBack }) => {
   const [activeImage, setActiveImage] = useState(0);
-  
+
   const images = [
     'https://images.unsplash.com/photo-1540496905036-5937c10647cc?w=800&h=600&fit=crop',
     'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop',
@@ -28,15 +28,15 @@ const ElitePlanDetails = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-600 via-orange-600 to-red-700 text-white">
-     
+
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12">
           {/* Image Gallery */}
           <div className="space-y-4">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={images[activeImage]} 
+              <img
+                src={images[activeImage]}
                 alt="Elite Plan Facility"
                 className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -47,9 +47,8 @@ const ElitePlanDetails = ({ onBack }) => {
                 <button
                   key={index}
                   onClick={() => setActiveImage(index)}
-                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                    activeImage === index ? 'ring-2 ring-yellow-400 scale-105' : 'opacity-70 hover:opacity-100'
-                  }`}
+                  className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${activeImage === index ? 'ring-2 ring-yellow-400 scale-105' : 'opacity-70 hover:opacity-100'
+                    }`}
                 >
                   <img src={img} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
                 </button>
@@ -68,16 +67,16 @@ const ElitePlanDetails = ({ onBack }) => {
                 </div>
               </div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-5xl font-bold text-yellow-400">₹14999</div>
+                <div className="text-5xl font-bold text-yellow-400">₹15500</div>
                 <div className="text-gray-300">
-                  <div className="line-through">₹15999</div>
+                  <div className="line-through">₹30000</div>
                 </div>
                 <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  33% OFF
+                  48% OFF
                 </div>
               </div>
               <p className="text-gray-200 text-lg leading-relaxed">
-                The ultimate fitness experience for those who demand excellence. Enjoy personalized service, 
+                The ultimate fitness experience for those who demand excellence. Enjoy personalized service,
                 cutting-edge technology, and comprehensive wellness support both in-gym and at home.
               </p>
             </div>
@@ -100,10 +99,10 @@ const ElitePlanDetails = ({ onBack }) => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to ="/contact" className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <Link to="/contact" className="flex-1 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                 TRY FOR FREE
               </Link>
-              <Link to ="/contact" className="flex-1 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+              <Link to="/contact" className="flex-1 border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300">
                 CONTACT US
               </Link>
             </div>

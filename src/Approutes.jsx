@@ -20,23 +20,23 @@ const Approutes = () => {
     <div>
       <Router>
         <ScrollToTop />
-      <Navbar />
-       <Routes>
-        <Route path="/" element={<HomePageS />} />
-       <Route path="/trainers" element={<TrainersPage  />} />
-        <Route path="/contact" element={<ContactPage />} />
-         <Route path="/classes/cardio" element={<CardioComponent />} />
-         <Route path="/classes/crossfit" element={<CrossFit />} />
-         <Route path="/classes/yoga" element={<YogaComponent />} />
-           <Route path="/classes/strengthtraning" element={<StrengthTraining />} />
-         <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/plan/basic-plan" element={<BasicPlanDetails />} />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePageS />} />
+          <Route path="/trainers" element={<TrainersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/classes/cardio" element={<CardioComponent />} />
+          <Route path="/classes/crossfit" element={<CrossFit />} />
+          <Route path="/classes/yoga" element={<YogaComponent />} />
+          <Route path="/classes/strengthtraning" element={<StrengthTraining />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/plan/basic-plan" element={<BasicPlanDetails />} />
           <Route path="/plan/standard-plan" element={<StandardPlanDetails />} />
           <Route path="/plan/premium-plan" element={<PremiumPlanDetails />} />
-           <Route path="/plan/elits-plan" element={<ElitePlanDetails />} />
-      </Routes>
-      <Footer />
-    </Router> 
+          <Route path="/plan/elits-plan" element={<ElitePlanDetails />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   )
 }

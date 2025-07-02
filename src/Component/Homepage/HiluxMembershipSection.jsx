@@ -10,56 +10,61 @@ import {
 
 const HiluxMembershipSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver(0.1);
-
   const membershipPlans = [
-  {
-    title: "Basic Plan",
-    price: "₹499/month",
-    planType: "basic",
-    features: [
-      "Access to gym equipment",
-      "Locker facility",
-      "1 personal training session/month",
-    ],
-    highlight: "Ideal for beginners",
-  },
-  {
-    title: "Standard Plan",
-    price: "₹999/month",
-    planType: "standard",
-    features: [
-      "Everything in Basic",
-      "Group fitness classes",
-      "Diet consultation",
-      "3 personal training sessions/month",
-    ],
-    highlight: "Popular choice",
-  },
-  {
-    title: "Premium Plan",
-    price: "₹1499/month",
-    planType: "premium",
-    features: [
-      "Everything in Standard",
-      "Unlimited group classes",
-      "Monthly health checkup",
-      "Dedicated coach support",
-    ],
-    highlight: "Best results guaranteed",
-  },
-  {
-    title: "Elite Plan",
-    price: "₹2499/month",
-    planType: "elite",
-    features: [
-      "All Premium benefits",
-      "Home workout sessions",
-      "Nutrition tracking",
-      "Mental wellness sessions",
-    ],
-    highlight: "Complete wellness package",
-  },
-];
+    {
+      title: "Monthly Plan",
+      price: "₹2500/Monthly",
+      duration: "1 Month",  // ✅ Added duration
+      planType: "basic",
+      features: [
+        "Access to gym equipment",
+        "Locker facility",
+        "1 personal training session/month",
+      ],
+      highlight: "Ideal for beginners",
+    },
+    {
+      title: "Standard Plan",
+      price: "₹5500/Quarterly",
+      duration: "3 Months",  // ✅ Added duration
+      planType: "standard",
+      features: [
+        "Everything in Basic",
+        "Group fitness classes",
+        "Diet consultation",
+        "3 personal training sessions/month",
+      ],
+      highlight: "Popular choice",
+    },
+    {
+      title: "Premium Plan",
+      price: "₹9500/Half-Yearly",
+      duration: "1 Year",  // ✅ Added duration
+      planType: "premium",
+      features: [
+        "Everything in Standard",
+        "Unlimited group classes",
+        "Monthly health checkup",
+        "Dedicated coach support",
+      ],
+      highlight: "Best results guaranteed",
+    },
+    {
+      title: "Elite Plan",
+      price: "₹15500/Yearly",
+      duration: "2 Years",  // ✅ Added duration
+      planType: "elite",
+      features: [
+        "All Premium benefits",
+        "Home workout sessions",
+        "Nutrition tracking",
+        "Mental wellness sessions",
+      ],
+      highlight: "Complete wellness package",
+    },
+  ];
+
+
 
 
   const specialPrograms = [
@@ -74,7 +79,7 @@ const HiluxMembershipSection = () => {
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Background and overlay */}
       <div className="absolute inset-0">
-        <div 
+        <div
           className="w-full h-full bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop)` }}
         />
