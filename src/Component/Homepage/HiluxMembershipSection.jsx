@@ -12,7 +12,7 @@ const HiluxMembershipSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver(0.1);
   const membershipPlans = [
     {
-      title: "Monthly Plan",
+      title: "Basic Plan",
       price: "₹2500/Monthly",
       duration: "1 Month",  // ✅ Added duration
       planType: "basic",
@@ -32,7 +32,7 @@ const HiluxMembershipSection = () => {
         "Everything in Basic",
         "Group fitness classes",
         "Diet consultation",
-        "3 personal training sessions/month",
+        "Diet planning",
       ],
       highlight: "Popular choice",
     },
@@ -44,8 +44,8 @@ const HiluxMembershipSection = () => {
       features: [
         "Everything in Standard",
         "Unlimited group classes",
-        "Monthly health checkup",
-        "Dedicated coach support",
+        "Dedicated support",
+        "Weight checkup",
       ],
       highlight: "Best results guaranteed",
     },
@@ -56,8 +56,7 @@ const HiluxMembershipSection = () => {
       planType: "elite",
       features: [
         "All Premium benefits",
-        "Home workout sessions",
-        "Nutrition tracking",
+        "Weight tracking",
         "Mental wellness sessions",
       ],
       highlight: "Complete wellness package",
@@ -100,7 +99,6 @@ const HiluxMembershipSection = () => {
               One membership for all your fitness needs. Fun, trainer led group classes.
             </p>
           </div>
-
           {/* Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-20">
             {membershipPlans.map((plan, index) => (

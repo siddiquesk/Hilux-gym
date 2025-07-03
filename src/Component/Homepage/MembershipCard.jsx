@@ -75,13 +75,6 @@ const MembershipCard = ({
           {subtitle && (
             <p className="text-gray-300 text-sm lg:text-base">{subtitle}</p>
           )}
-
-          {/* ✅ PRICE DISPLAY HERE */}
-          {price && (
-            <p className="text-xl lg:text-2xl font-bold text-red-400 mt-2">
-              {price}
-            </p>
-          )}
         </div>
 
         {/* Features List */}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Star, 
-  
+import {
+  Star,
+
 } from 'lucide-react';
 const Testnomial = () => {
-    const [isVisible, setIsVisible] = useState({});
-      const [currentTestimonial, setCurrentTestimonial] = useState(0);
-    const testimonials = [
+  const [isVisible, setIsVisible] = useState({});
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const testimonials = [
     {
       name: "Rahul Mehta",
       role: "Software Engineer",
@@ -29,7 +29,7 @@ const Testnomial = () => {
       image: "/api/placeholder/60/60"
     }
   ];
- 
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,12 +62,11 @@ const Testnomial = () => {
   }, []);
   return (
     <div>
-       <section className="py-16 px-4">
+      <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div 
-            className={`text-center mb-12 transition-all duration-1000 ${
-              isVisible.testimonials ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+          <div
+            className={`text-center mb-12 transition-all duration-1000 ${isVisible.testimonials ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
             id="testimonials"
             data-animate
           >
@@ -83,11 +82,10 @@ const Testnomial = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`transition-all duration-500 ${
-                  index === currentTestimonial 
-                    ? 'opacity-100 translate-x-0' 
-                    : 'opacity-0 absolute inset-0 translate-x-full'
-                }`}
+                className={`transition-all duration-500 ${index === currentTestimonial
+                  ? 'opacity-100 translate-x-0'
+                  : 'opacity-0 absolute inset-0 translate-x-full'
+                  }`}
               >
                 <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
                   <div className="flex items-center mb-6">
@@ -104,25 +102,24 @@ const Testnomial = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-300 text-lg leading-relaxed italic">
                     "{testimonial.content}"
                   </p>
                 </div>
               </div>
             ))}
-            
+
             {/* Testimonial Indicators */}
             <div className="flex justify-center space-x-2 mt-6">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial 
-                      ? 'bg-purple-500 scale-125' 
-                      : 'bg-gray-600 hover:bg-gray-500'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial
+                    ? 'bg-purple-500 scale-125'
+                    : 'bg-gray-600 hover:bg-gray-500'
+                    }`}
                 />
               ))}
             </div>

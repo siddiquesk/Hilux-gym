@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 import {
     MapPin,
     Phone,
@@ -23,52 +25,98 @@ import {
     Zap
 } from 'lucide-react';
 
-// EmailJS configuration (you'll need to replace these with your actual values)
-const EMAILJS_SERVICE_ID = 'your_service_id';
-const EMAILJS_TEMPLATE_ID = 'your_template_id';
-const EMAILJS_PUBLIC_KEY = 'your_public_key';
+
 
 const ContactPage = () => {
+    const [isVisible, setIsVisible] = useState({});
+    const [isVisible20, setIsVisible20] = useState(false);
+    const [activeTab, setActiveTab] = useState('contact');
+    const mapRef = useRef(null);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
+        inquiryType: 'general',
         subject: '',
-        message: '',
-        inquiryType: 'general'
+        message: ''
     });
 
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState(null);
-    const [isVisible, setIsVisible] = useState({});
-    const [activeTab, setActiveTab] = useState('contact');
-    const mapRef = useRef(null);
-    const [isVisible20, setIsVisible20] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState('');
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+
+        if (formErrors[name]) {
+            setFormErrors(prev => ({ ...prev, [name]: '' }));
+        }
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        if (!formData.name.trim()) errors.name = 'Name is required';
+        if (!formData.email.trim()) errors.email = 'Email is required';
+        if (!formData.phone.trim()) errors.phone = 'Phone is required';
+        if (!formData.subject.trim()) errors.subject = 'Subject is required';
+        if (!formData.message.trim()) errors.message = 'Message is required';
+        return errors;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const errors = validateForm();
+        setFormErrors(errors);
+        if (Object.keys(errors).length > 0) return;
+
+        setIsSubmitting(true);
+        setSubmitStatus('');
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                access_key: "ed3658c0-7469-43bb-8532-58b4b628b324", // ⬅️ Replace with your real Access Key
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                inquiryType: formData.inquiryType,
+                subject: formData.subject,
+                message: formData.message
+            })
+        });
+
+        if (response.ok) {
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', phone: '', inquiryType: 'general', subject: '', message: '' });
+        } else {
+            setSubmitStatus('error');
+        }
+        setIsSubmitting(false);
+    };
+
+
+    // Trigger visibility for animation when component mounts
     useEffect(() => {
         setIsVisible20(true);
     }, []);
-
+    // Open Google Maps Directions
     const openDirections = () => {
         const address = "A-797, 3rd Floor, GD Colony, Mayur Vihar Phase-3, Delhi-110096";
         const encodedAddress = encodeURIComponent(address);
         window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
     };
+    // Intersection Observer to trigger animations when sections come into view
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(prev => ({
-                            ...prev,
-                            [entry.target.id]: true
-                        }));
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(prev => ({ ...prev, [entry.target.id]: true }));
+                }
+            });
+        }, { threshold: 0.1 });
 
         const sections = document.querySelectorAll('[data-animate]');
         sections.forEach(section => observer.observe(section));
@@ -78,112 +126,10 @@ const ContactPage = () => {
         };
     }, []);
 
-    // Form validation
-    const validateForm = () => {
-        const errors = {};
 
-        if (!formData.name.trim()) {
-            errors.name = 'Name is required';
-        } else if (formData.name.trim().length < 2) {
-            errors.name = 'Name must be at least 2 characters';
-        }
 
-        if (!formData.email.trim()) {
-            errors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            errors.email = 'Please enter a valid email address';
-        }
 
-        if (!formData.phone.trim()) {
-            errors.phone = 'Phone number is required';
-        } else if (!/^[+]?[\d\s\-\(\)]{10,}$/.test(formData.phone.replace(/\s/g, ''))) {
-            errors.phone = 'Please enter a valid phone number';
-        }
-
-        if (!formData.subject.trim()) {
-            errors.subject = 'Subject is required';
-        }
-
-        if (!formData.message.trim()) {
-            errors.message = 'Message is required';
-        } else if (formData.message.trim().length < 10) {
-            errors.message = 'Message must be at least 10 characters';
-        }
-
-        return errors;
-    };
-
-    // Handle form submission
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const errors = validateForm();
-        setFormErrors(errors);
-
-        if (Object.keys(errors).length > 0) {
-            return;
-        }
-
-        setIsSubmitting(true);
-        setSubmitStatus(null);
-
-        try {
-            // EmailJS integration (you'll need to install emailjs-com: npm install emailjs-com)
-            // For now, we'll simulate the email sending
-            await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
-
-            // Uncomment and configure when you have EmailJS set up:
-            /*
-            const result = await emailjs.send(
-              EMAILJS_SERVICE_ID,
-              EMAILJS_TEMPLATE_ID,
-              {
-                from_name: formData.name,
-                from_email: formData.email,
-                phone: formData.phone,
-                subject: formData.subject,
-                message: formData.message,
-                inquiry_type: formData.inquiryType,
-                to_email: 'karan.hiluxfitness@gmail.com'
-              },
-              EMAILJS_PUBLIC_KEY
-            );
-            */
-
-            setSubmitStatus('success');
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                subject: '',
-                message: '',
-                inquiryType: 'general'
-            });
-
-        } catch (error) {
-            console.error('Error sending email:', error);
-            setSubmitStatus('error');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-
-        // Clear error when user starts typing
-        if (formErrors[name]) {
-            setFormErrors(prev => ({
-                ...prev,
-                [name]: ''
-            }));
-        }
-    };
-
+    // Static Contact Information Cards
     const contactInfo = [
         {
             icon: MapPin,
@@ -210,13 +156,14 @@ const ContactPage = () => {
             color: "from-purple-500 to-pink-500"
         }
     ];
-
+    // Static Business Hours
     const businessHours = [
         { day: "Monday - Friday", hours: "5:00 AM - 11:00 PM" },
         { day: "Saturday", hours: "6:00 AM - 10:00 PM" },
         { day: "Sunday", hours: "7:00 AM - 9:00 PM" }
     ];
 
+    // Social Media Links
     const socialLinks = [
         { icon: Facebook, name: "Facebook", url: "#", color: "hover:text-blue-400" },
         { icon: Instagram, name: "Instagram", url: "#", color: "hover:text-pink-400" },
@@ -224,6 +171,7 @@ const ContactPage = () => {
         { icon: Linkedin, name: "LinkedIn", url: "#", color: "hover:text-blue-500" }
     ];
 
+    // Inquiry Type Dropdown Options
     const inquiryTypes = [
         { value: 'general', label: 'General Inquiry' },
         { value: 'membership', label: 'Membership Information' },
@@ -248,11 +196,9 @@ const ContactPage = () => {
                         <Heart className="w-5 h-5 text-purple-400" />
                         <span className="text-purple-300 text-sm font-medium">Let's Connect</span>
                     </div>
-
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-pulse">
                         Get In Touch
                     </h1>
-
                     <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
                         Ready to transform your fitness journey? We're here to help you every step of the way. Let's start your success story today.
                     </p>
@@ -287,7 +233,7 @@ const ContactPage = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${activeTab === tab.id
+                                    className={`flex items-center space-x-2 px-6 py-3 my-2 rounded-full transition-all duration-300 ${activeTab === tab.id
                                         ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg scale-105'
                                         : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white'
                                         }`}
@@ -336,147 +282,76 @@ const ContactPage = () => {
                                             <span className="text-red-300">Failed to send message. Please try again or contact us directly.</span>
                                         </div>
                                     )}
-
+                                    {/*forms  */}
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                    Full Name *
-                                                </label>
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
                                                 <div className="relative">
                                                     <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                                                    <input
-                                                        type="text"
-                                                        name="name"
-                                                        value={formData.name}
-                                                        onChange={handleInputChange}
-                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.name
-                                                            ? 'border-red-500 focus:ring-red-500/50'
-                                                            : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'
-                                                            }`}
-                                                        placeholder="Your full name"
-                                                    />
+                                                    <input type="text" name="name" value={formData.name} onChange={handleInputChange}
+                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'}`}
+                                                        placeholder="Your full name" />
                                                 </div>
-                                                {formErrors.name && (
-                                                    <p className="mt-1 text-sm text-red-400">{formErrors.name}</p>
-                                                )}
+                                                {formErrors.name && <p className="mt-1 text-sm text-red-400">{formErrors.name}</p>}
                                             </div>
 
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                    Email Address *
-                                                </label>
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
                                                 <div className="relative">
                                                     <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                                                    <input
-                                                        type="email"
-                                                        name="email"
-                                                        value={formData.email}
-                                                        onChange={handleInputChange}
-                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.email
-                                                            ? 'border-red-500 focus:ring-red-500/50'
-                                                            : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'
-                                                            }`}
-                                                        placeholder="your.email@example.com"
-                                                    />
+                                                    <input type="email" name="email" value={formData.email} onChange={handleInputChange}
+                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'}`}
+                                                        placeholder="your.email@example.com" />
                                                 </div>
-                                                {formErrors.email && (
-                                                    <p className="mt-1 text-sm text-red-400">{formErrors.email}</p>
-                                                )}
+                                                {formErrors.email && <p className="mt-1 text-sm text-red-400">{formErrors.email}</p>}
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                    Phone Number *
-                                                </label>
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number *</label>
                                                 <div className="relative">
                                                     <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                                                    <input
-                                                        type="tel"
-                                                        name="phone"
-                                                        value={formData.phone}
-                                                        onChange={handleInputChange}
-                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.phone
-                                                            ? 'border-red-500 focus:ring-red-500/50'
-                                                            : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'
-                                                            }`}
-                                                        placeholder="+91 9301090000"
-                                                    />
+                                                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange}
+                                                        className={`w-full pl-12 pr-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.phone ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'}`}
+                                                        placeholder="+91 9301090000" />
                                                 </div>
-                                                {formErrors.phone && (
-                                                    <p className="mt-1 text-sm text-red-400">{formErrors.phone}</p>
-                                                )}
+                                                {formErrors.phone && <p className="mt-1 text-sm text-red-400">{formErrors.phone}</p>}
                                             </div>
 
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                    Inquiry Type
-                                                </label>
-                                                <select
-                                                    name="inquiryType"
-                                                    value={formData.inquiryType}
-                                                    onChange={handleInputChange}
-                                                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:border-purple-500 focus:ring-purple-500/50 transition-all duration-300"
-                                                >
-                                                    {inquiryTypes.map(type => (
-                                                        <option key={type.value} value={type.value} className="bg-gray-800">
-                                                            {type.label}
-                                                        </option>
-                                                    ))}
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Inquiry Type</label>
+                                                <select name="inquiryType" value={formData.inquiryType} onChange={handleInputChange}
+                                                    className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:border-purple-500 focus:ring-purple-500/50 transition-all duration-300">
+                                                    <option value="general" className="bg-gray-800">General Inquiry</option>
+                                                    <option value="membership" className="bg-gray-800">Membership Information</option>
+                                                    <option value="personal-training" className="bg-gray-800">Personal Training</option>
+                                                    <option value="group-classes" className="bg-gray-800">Group Classes</option>
+                                                    <option value="corporate" className="bg-gray-800">Corporate Packages</option>
+                                                    <option value="nutrition" className="bg-gray-800">Nutrition Consultation</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                Subject *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="subject"
-                                                value={formData.subject}
-                                                onChange={handleInputChange}
-                                                className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.subject
-                                                    ? 'border-red-500 focus:ring-red-500/50'
-                                                    : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'
-                                                    }`}
-                                                placeholder="What's this about?"
-                                            />
-                                            {formErrors.subject && (
-                                                <p className="mt-1 text-sm text-red-400">{formErrors.subject}</p>
-                                            )}
+                                            <label className="block text-sm font-medium text-gray-300 mb-2">Subject *</label>
+                                            <input type="text" name="subject" value={formData.subject} onChange={handleInputChange}
+                                                className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${formErrors.subject ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'}`}
+                                                placeholder="What's this about?" />
+                                            {formErrors.subject && <p className="mt-1 text-sm text-red-400">{formErrors.subject}</p>}
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-300 mb-2">
-                                                Message *
-                                            </label>
-                                            <textarea
-                                                name="message"
-                                                value={formData.message}
-                                                onChange={handleInputChange}
-                                                rows="5"
-                                                className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 resize-none transition-all duration-300 ${formErrors.message
-                                                    ? 'border-red-500 focus:ring-red-500/50'
-                                                    : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'
-                                                    }`}
-                                                placeholder="Tell us about your fitness goals, questions, or how we can help you..."
-                                            />
-                                            {formErrors.message && (
-                                                <p className="mt-1 text-sm text-red-400">{formErrors.message}</p>
-                                            )}
+                                            <label className="block text-sm font-medium text-gray-300 mb-2">Message *</label>
+                                            <textarea name="message" value={formData.message} onChange={handleInputChange} rows="5"
+                                                className={`w-full px-4 py-3 bg-gray-700/50 border rounded-lg focus:outline-none focus:ring-2 resize-none transition-all duration-300 ${formErrors.message ? 'border-red-500 focus:ring-red-500/50' : 'border-gray-600 focus:border-purple-500 focus:ring-purple-500/50'}`}
+                                                placeholder="Tell us about your fitness goals, questions, or how we can help you..."></textarea>
+                                            {formErrors.message && <p className="mt-1 text-sm text-red-400">{formErrors.message}</p>}
                                         </div>
 
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                            className={`w-full py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${isSubmitting
-                                                ? 'bg-gray-600 cursor-not-allowed'
-                                                : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 hover:scale-105 hover:shadow-xl'
-                                                }`}
-                                        >
+                                        <button type="submit" disabled={isSubmitting}
+                                            className={`w-full py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${isSubmitting ? 'bg-gray-600 cursor-not-allowed' : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 hover:scale-105 hover:shadow-xl'}`}>
                                             {isSubmitting ? (
                                                 <>
                                                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -489,6 +364,9 @@ const ContactPage = () => {
                                                 </>
                                             )}
                                         </button>
+
+                                        {submitStatus === 'success' && <p className="text-green-400 mt-4">Message sent successfully!</p>}
+                                        {submitStatus === 'error' && <p className="text-red-400 mt-4">Failed to send message. Please try again.</p>}
                                     </form>
                                 </div>
                             </div>
@@ -542,7 +420,7 @@ const ContactPage = () => {
                     )}
 
                     {/* Interactive Map Section */}
-                    <div className="relative">
+                    <div className="relative mt-6">
                         <div className="h-96 bg-gray-800 relative overflow-hidden rounded-b-2xl">
                             {/* Google Maps Embed */}
                             <iframe
@@ -570,7 +448,6 @@ const ContactPage = () => {
                                     <span>Get Directions</span>
                                 </button>
                             </div>
-
                             {/* Location Pin Overlay */}
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                                 <div className="relative">

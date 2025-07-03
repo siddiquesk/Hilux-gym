@@ -9,9 +9,8 @@ const AppDownload = () => {
   return (
     <div
       ref={ref}
-      className={`relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 backdrop-blur-md transform transition-all duration-1000 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-      }`}
+      className={`relative overflow-hidden rounded-2xl  md:mt-8 mt-2 bg-gradient-to-r from-red-600/20 to-orange-600/20 border border-red-500/30 backdrop-blur-md transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+        }`}
     >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-transparent to-orange-500/20" />
@@ -43,7 +42,7 @@ const AppDownload = () => {
                 <Download className="w-5 h-5" />
                 <span>Download App</span>
               </button>
-              <Link to ="/contact" className="flex items-center space-x-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors">
+              <Link to="/contact" className="flex items-center space-x-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors">
                 <Smartphone className="w-5 h-5" />
                 <span>Get Started</span>
               </Link>

@@ -1,25 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Star, 
-  Award, 
-  Clock, 
-  Users, 
-  Heart, 
-  Target, 
-  Zap, 
-  Trophy,
-  CheckCircle,
-  ArrowRight,
-  Play,
-  Dumbbell,
-  Shield,
-  TrendingUp,
-  MapPin,
-  Calendar,
-  Medal
-} from 'lucide-react';
 import Testnomial from './Testnomial';
 import { Link } from 'react-router-dom';
+import { Star, Award, Clock, Users, Heart, Target, Zap, Trophy, CheckCircle, ArrowRight, Play, Dumbbell, Shield, TrendingUp, MapPin, Calendar, Medal } from 'lucide-react';
 
 const TrainersPage = () => {
   const [activeTrainer, setActiveTrainer] = useState(null);
@@ -183,10 +165,9 @@ const TrainersPage = () => {
       {/* Hero Section */}
       <section className="relative py-20 px-4 text-center">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-pink-900/20"></div>
-        <div 
-          className={`relative z-10 max-w-6xl mx-auto transition-all duration-1000 ${
-            isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+        <div
+          className={`relative z-10 max-w-6xl mx-auto transition-all duration-1000 ${isVisible.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
           id="hero"
           data-animate
         >
@@ -194,15 +175,15 @@ const TrainersPage = () => {
             <Dumbbell className="w-5 h-5 text-purple-400" />
             <span className="text-purple-300 text-sm font-medium">Meet Our Expert Team</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent animate-pulse">
             Elite Trainers
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             World-class certified trainers dedicated to transforming your fitness journey with personalized coaching and unwavering support.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
             <div className="flex items-center space-x-2 bg-gray-800/50 px-4 py-2 rounded-full backdrop-blur-sm">
               <Award className="w-4 h-4 text-yellow-400" />
@@ -223,10 +204,9 @@ const TrainersPage = () => {
       {/* Trainers Grid */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div 
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible.trainersGrid ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+          <div
+            className={`text-center mb-16 transition-all duration-1000 ${isVisible.trainersGrid ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
             id="trainersGrid"
             data-animate
           >
@@ -242,9 +222,8 @@ const TrainersPage = () => {
             {trainers.map((trainer, index) => (
               <div
                 key={trainer.id}
-                className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 ${
-                  isVisible.trainersGrid ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+                className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 ${isVisible.trainersGrid ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
                 onClick={() => setActiveTrainer(activeTrainer === trainer.id ? null : trainer.id)}
               >
@@ -312,9 +291,8 @@ const TrainersPage = () => {
                     <span className="text-sm font-medium">
                       {activeTrainer === trainer.id ? 'Show Less' : 'Learn More'}
                     </span>
-                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${
-                      activeTrainer === trainer.id ? 'rotate-90' : ''
-                    }`} />
+                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${activeTrainer === trainer.id ? 'rotate-90' : ''
+                      }`} />
                   </button>
 
                   {/* Expanded Content */}
@@ -331,7 +309,7 @@ const TrainersPage = () => {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-purple-400 font-semibold mb-2">Key Achievements</h4>
                         <ul className="space-y-1">
@@ -362,10 +340,9 @@ const TrainersPage = () => {
       {/* Gym Advantages */}
       <section className="py-16 px-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50">
         <div className="max-w-7xl mx-auto">
-          <div 
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+          <div
+            className={`text-center mb-16 transition-all duration-1000 ${isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
             id="advantages"
             data-animate
           >
@@ -383,19 +360,18 @@ const TrainersPage = () => {
               return (
                 <div
                   key={index}
-                  className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 ${
-                    isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                  className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 ${isVisible.advantages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
                   <div className={`w-16 h-16 bg-gradient-to-r ${advantage.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                     {advantage.title}
                   </h3>
-                  
+
                   <p className="text-gray-300 text-sm leading-relaxed">
                     {advantage.description}
                   </p>
@@ -410,38 +386,37 @@ const TrainersPage = () => {
       </section>
 
       {/* Testimonials */}
-   <Testnomial/>
+      <Testnomial />
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-purple-900/50 to-pink-900/50">
         <div className="max-w-4xl mx-auto text-center">
-          <div 
-            className={`transition-all duration-1000 ${
-              isVisible.cta ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+          <div
+            className={`transition-all duration-1000 ${isVisible.cta ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
             id="cta"
             data-animate
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Ready to Transform Your Life?
             </h2>
-            
+
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Join hundreds of success stories and start your fitness journey with Delhi's best trainers today.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-2">
                 <Calendar className="w-5 h-5" />
                 <span>Book Free Consultation</span>
               </Link>
-              
+
               <button className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2">
                 <Play className="w-5 h-5" />
-                <span>Watch Success Stories</span>
+                <Link to="/classes/strengthtraning"><span>Watch Success Stories</span></Link>
               </button>
             </div>
-            
+
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="group">
                 <div className="text-3xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">450+</div>

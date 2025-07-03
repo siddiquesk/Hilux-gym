@@ -195,6 +195,7 @@ const FitnessProgramCards = () => {
         <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-cyan-500/10 to-transparent" />
       </div>
 
+      {/*end section */}
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
 
         {/* Section Header */}
@@ -215,13 +216,14 @@ const FitnessProgramCards = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
+
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
           {programData.map((program, index) => (
             <div key={index} className="w-full">
               <ProgramCard {...program} />
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Bottom CTA Section */}
         <div className="mt-20 text-center">
@@ -230,10 +232,10 @@ const FitnessProgramCards = () => {
               Ready to start your transformation journey?
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/pricing" className="px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-xl font-semibold hover:scale-105 transform transition-all duration-300 shadow-2xl hover:shadow-teal-500/25">
+              <Link to="/pricing" className="px-8 py-4 mb-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-xl font-semibold hover:scale-105 transform transition-all duration-300 shadow-2xl hover:shadow-teal-500/25">
                 Explore Programs
               </Link>
-              <Link to="/contact" className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
+              <Link to="/contact" className="px-8 py-4 mb-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
                 Learn More
               </Link>
             </div>

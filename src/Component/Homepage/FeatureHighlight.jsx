@@ -7,9 +7,8 @@ const FeatureHighlight = ({ icon: Icon, title, description, delay = 0 }) => {
   return (
     <div
       ref={ref}
-      className={`group p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 hover:bg-white/10 hover:border-red-500/30 transition-all duration-500 transform hover:scale-105 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-      }`}
+      className={`group p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 hover:bg-white/10 hover:border-red-500/30 transition-all duration-500 transform hover:scale-105 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="flex items-center space-x-4">

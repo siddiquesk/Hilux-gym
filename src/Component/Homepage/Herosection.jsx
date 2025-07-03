@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, ArrowRight, Dumbbell, Users, Award, Clock } from 'lucide-react';
 import vedio1 from "../../assets/GymFitnessVideo.mp4"
 import vedio2 from "../../assets/Visualmodo.mp4"
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 const HiluxFitnessHero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentStat, setCurrentStat] = useState(0);
@@ -82,14 +82,19 @@ const HiluxFitnessHero = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 leading-tight">
-                <span className="block bg-gradient-to-r from-white via-red-200 to-red-400 bg-clip-text text-transparent animate-pulse">
+              <h1 className="mb-6 leading-tight">
+                {/* HILUX — Yellow color, pulse animation, big size */}
+                <span className="block text-5xl sm:text-7xl lg:text-9xl font-black text-yellow-400 animate-pulse drop-shadow-2xl">
                   HILUX
                 </span>
-                <span className="block text-white mt-2 transform hover:scale-105 transition-transform duration-300 drop-shadow-2xl">
+
+                {/* FITNESS — White text, hover scale effect */}
+                <span className="block text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-2 transform hover:scale-105 transition-transform duration-300 drop-shadow-lg">
                   FITNESS
                 </span>
               </h1>
+
+
               <p className="font-bold text-xl md:text-3xl md:mb-2 mb-0 flex items-center gap-3 md:ml-32 ml-4">
                 Powered By
                 <img
@@ -195,7 +200,10 @@ const HiluxFitnessHero = () => {
                   <p className="text-gray-200 text-sm mb-4">Join thousands who've achieved their fitness goals</p>
                   <div className="flex justify-center">
                     <div className="relative">
-                      <Link to="/contact" className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                      <Link
+                        to="/contact"
+                        className="px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-xl cursor-pointer relative z-10"
+                      >
                         Get Started Today
                       </Link>
                       <div className="absolute inset-0 bg-red-600 rounded-lg animate-ping opacity-25"></div>
