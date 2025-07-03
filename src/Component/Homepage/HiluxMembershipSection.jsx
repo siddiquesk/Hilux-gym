@@ -64,8 +64,6 @@ const HiluxMembershipSection = () => {
   ];
 
 
-
-
   const specialPrograms = [
     { icon: Target, title: "hilux transform", description: "Get coached to lose weight for good" },
     { icon: Heart, title: "The .fit way", description: "Making health easy, one day at a time" },
@@ -92,8 +90,8 @@ const HiluxMembershipSection = () => {
             ref={headerRef}
             className={`text-center mb-16 transform transition-all duration-1000 ${isHeaderVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
           >
-            <h1 className="text-4xl lg:text-6xl font-black text-white mb-6">
-              <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">hilux course</span>
+            <h1 className="text-3xl lg:text-5xl font-black text-white mb-6">
+              <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Best Fitness Center In Mayur Vihar Phase-3</span>
             </h1>
             <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               One membership for all your fitness needs. Fun, trainer led group classes.

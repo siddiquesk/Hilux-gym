@@ -154,16 +154,16 @@ const HiluxFitnessHero = () => {
               <div className="space-y-6">
                 {[
                   {
-                    title: "Personal Training",
+                    title: "Unisex Gym",
+                    description: "Best Fitness center for male, female and couples",
+                    icon: "👥",
+                    delay: "delay-200"
+                  },
+                  {
+                    title: "Personal Training/Group Classes",
                     description: "One-on-one sessions with certified trainers",
                     icon: "🏋️",
                     delay: "delay-100"
-                  },
-                  {
-                    title: "Group Classes",
-                    description: "High-energy classes for all fitness levels",
-                    icon: "👥",
-                    delay: "delay-200"
                   },
                   {
                     title: "Modern Equipment",

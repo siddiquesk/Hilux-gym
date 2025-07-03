@@ -40,7 +40,13 @@ const AppDownload = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="flex items-center space-x-2 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
                 <Download className="w-5 h-5" />
-                <span>Download App</span>
+                <a
+                  href="https://apps.apple.com/app/hilux-fitness-club/id6748004773"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Download App</span>
+                </a>
               </button>
               <Link to="/contact" className="flex items-center space-x-2 bg-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-colors">
                 <Smartphone className="w-5 h-5" />

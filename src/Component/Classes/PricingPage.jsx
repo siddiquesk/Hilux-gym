@@ -55,14 +55,11 @@ const PricingPage = () => {
       color: 'from-gray-600 to-gray-800',
       borderColor: 'border-gray-500/30',
       glowColor: 'shadow-gray-500/25',
-      price: {
-        monthly: "2500",
-      },
       popular: false,
       features: [
         { text: 'Access to gym equipment', icon: Dumbbell },
         { text: 'Locker facility', icon: Shield },
-        { text: '1 personal training session', icon: User }
+        { text: 'Functional Training', icon: Users },
       ],
       badge: null
     },
@@ -73,15 +70,12 @@ const PricingPage = () => {
       color: 'from-blue-600 to-blue-800',
       borderColor: 'border-blue-500/30',
       glowColor: 'shadow-blue-500/25',
-      price: {
-        monthly: 5500,
-      },
       popular: false,
       features: [
         { text: 'Everything in Basic', icon: Check },
         { text: 'Group fitness classes', icon: Users },
         { text: 'Diet consultation', icon: Heart },
-        { text: '3 personal training sessions/month', icon: User }
+
       ],
       badge: null
     },
@@ -92,14 +86,10 @@ const PricingPage = () => {
       color: 'from-red-600 to-red-800',
       borderColor: 'border-red-500/30',
       glowColor: 'shadow-red-500/25',
-      price: {
-        monthly: 9500,
-      },
       popular: true,
       features: [
         { text: 'Everything in Standard', icon: Check },
         { text: 'Unlimited group classes', icon: Users },
-        { text: 'Monthly health checkup', icon: Activity },
         { text: 'Dedicated coach support', icon: Target }
       ],
       badge: 'Most Popular'
@@ -111,15 +101,11 @@ const PricingPage = () => {
       color: 'from-purple-600 to-purple-800',
       borderColor: 'border-purple-500/30',
       glowColor: 'shadow-purple-500/25',
-      price: {
-        monthly: 15500,
-      },
       popular: false,
       features: [
         { text: 'All Premium benefits', icon: Check },
-        { text: 'Home workout sessions', icon: Home },
-        { text: 'Nutrition tracking', icon: TrendingUp },
-        { text: 'Mental wellness sessions', icon: Brain }
+        { text: 'Weight Training', icon: TrendingUp },
+        { text: 'Strength Training', icon: Brain }
       ],
       badge: 'Ultimate'
     }
@@ -233,7 +219,6 @@ const PricingPage = () => {
             {plans.map((plan, index) => {
               const Icon = plan.icon;
               const isHovered = hoveredPlan === plan.id;
-              const discount = getDiscountPercentage(plan.price.monthly, plan.price.yearly);
 
               return (
                 <div
@@ -272,15 +257,15 @@ const PricingPage = () => {
 
                       <div className="flex items-center justify-center space-x-2">
                         <span className="text-3xl sm:text-4xl font-black text-white">
-                          ₹{plan.price[billingCycle]}
+
                         </span>
                         <div className="flex flex-col text-left">
                           <span className="text-gray-400 text-sm">
-                            /{billingCycle === 'monthly' ? 'month' : 'year'}
+                            {billingCycle === 'monthly' ? '' : ''}
                           </span>
                           {billingCycle === 'yearly' && (
                             <span className="text-green-400 text-xs font-medium">
-                              Save {discount}%
+
                             </span>
                           )}
                         </div>
