@@ -15,12 +15,16 @@ import StandardPlanDetails from './Component/Allplan/StandardPlanDetails';
 import PremiumPlanDetails from './Component/Allplan/PremiumPlanDetails';
 import ElitePlanDetails from './Component/Allplan/ElitePlanDetails';
 import ScrollToTop from './Component/Contactpage/ScrollToTop';
+import Icon from "./Component/icons/Icon"
 const Approutes = () => {
   return (
     <div>
       <Router>
         <ScrollToTop />
         <Navbar />
+        <div>
+          <Icon />
+        </div>
         <Routes>
           <Route path="/" element={<HomePageS />} />
           <Route path="/trainers" element={<TrainersPage />} />

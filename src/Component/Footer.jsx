@@ -66,9 +66,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, url: "#", color: "hover:text-blue-400" },
-    { name: "Twitter", icon: Twitter, url: "#", color: "hover:text-sky-400" },
-    { name: "Instagram", icon: Instagram, url: "#", color: "hover:text-pink-400" },
+    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/groups/1206238444381257/", color: "hover:text-blue-400" },
+    { name: "Twitter", icon: Twitter, url: "https://x.com/hiluxfitness", color: "hover:text-sky-400" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/hiluxfitness/", color: "hover:text-pink-400" },
     { name: "LinkedIn", icon: Linkedin, url: "#", color: "hover:text-blue-500" }
   ];
 

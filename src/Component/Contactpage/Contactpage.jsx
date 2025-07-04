@@ -152,7 +152,7 @@ const ContactPage = () => {
             title: "Email Us",
             details: ["karan.hiluxfitness@gmail.com", "Quick Response", "Professional Support"],
             action: "Send Email",
-            link: "mailto:karan.hiluxfitness@gmail.com",
+            link: "https://mail.google.com/mail/?view=cm&fs=1&to=karan.hiluxfitness@gmail.com&su=Inquiry&body=Hello",
             color: "from-purple-500 to-pink-500"
         }
     ];

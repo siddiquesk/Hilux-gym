@@ -95,7 +95,7 @@ const HiluxFitnessHero = () => {
               </h1>
 
 
-              <p className="font-bold text-xl md:text-3xl md:mb-2 mb-0 flex items-center gap-3 md:ml-32 ml-4">
+              <p className="font-bold text-xl md:text-3xl md:mb-2 mb-0 flex items-center gap-3 md:ml-32 ml-20">
                 Powered By
                 <img
                   src="/cult.webp"

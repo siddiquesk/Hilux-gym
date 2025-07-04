@@ -3,7 +3,6 @@ import MembershipCard from './MembershipCard';
 import FeatureHighlight from './FeatureHighlight';
 import AppDownload from './AppDownload';
 import useIntersectionObserver from './useIntersectionObserver';
-
 import {
   Dumbbell, Heart, Target, Shield, Zap
 } from 'lucide-react';
@@ -86,6 +85,7 @@ const HiluxMembershipSection = () => {
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
+       
           <div
             ref={headerRef}
             className={`text-center mb-16 transform transition-all duration-1000 ${isHeaderVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
